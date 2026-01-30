@@ -1,16 +1,23 @@
-let logoImg;
+let logo;
 
 function preload() {
-  logoImg = loadImage("assets/logo.png");
+  // AGORA A LOGO É DA RAIZ
+  logo = loadImage("logo.png");
 }
 
 function setup() {
-  createCanvas(600, 300);
+  createCanvas(800, 400);
 }
 
 function draw() {
-  background(30);
-  if (logoImg) {
-    image(logoImg, 250, 50, 100, 100);
+  background(20, 30, 60);
+
+  fill(255);
+  textSize(22);
+  textAlign(CENTER, CENTER);
+  text("Teste de Logo – Passa ou Repassa 9º Ano", width / 2, 60);
+
+  if (logo) {
+    image(logo, width / 2 - 75, 120, 150, 150);
   }
 }
