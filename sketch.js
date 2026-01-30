@@ -11,7 +11,7 @@
 // - logo.png na RAIZ do repositório (mesmo nível de index.html)
 // =======================================================
 
-let W = 960, H = 540;
+let W, H;
 
 // Logo (na raiz)
 let logoImg;
@@ -261,9 +261,12 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(W, H);
+  createCanvas(windowWidth, windowHeight);
+  W = width;
+  H = height;
+
   textFont("system-ui");
-  setupUI();       // cria DOM (escondido/mostrado por tela)
+  setupUI();
   goMenu();
 }
 
@@ -951,4 +954,9 @@ function keyPressed() {
     state = "final";
     hideAllUI();
   }
+}
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  W = width;
+  H = height;
 }
