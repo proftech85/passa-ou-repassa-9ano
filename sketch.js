@@ -1,16 +1,16 @@
-<!doctype html>
-<html lang="pt-br">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Passa ou Repassa – 9º ano</title>
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
-  <style>
-    html, body { margin:0; padding:0; background:#070b18; color:#eaf0ff; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; }
-    canvas { display:block; margin:0 auto; }
-  </style>
-</head>
-<body>
-  <script src="sketch.js"></script>
-</body>
-</html>
+let logoImg;
+
+function preload() {
+  logoImg = loadImage("assets/logo.png");
+}
+
+function setup() {
+  createCanvas(600, 300);
+}
+
+function draw() {
+  background(30);
+  if (logoImg) {
+    image(logoImg, 250, 50, 100, 100);
+  }
+}
