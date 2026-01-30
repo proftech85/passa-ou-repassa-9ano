@@ -955,7 +955,71 @@ function keyPressed() {
     hideAllUI();
   }
 }
-function windowResized() {
+function windowResized()
+function layoutUI() {
+  const m = 16;
+  const header = 60;
+
+  // MENU
+  if (btnStart) {
+    btnStart.position(m, height - 55);
+  }
+
+  // PLAYERS
+  if (btnModeTeams) btnModeTeams.position(m, header + 18);
+  if (btnModeSolo)  btnModeSolo.position(m + 150, header + 18);
+
+  if (btnAddPlayer)    btnAddPlayer.position(m, header + 60);
+  if (btnRemovePlayer) btnRemovePlayer.position(m + 36, header + 60);
+
+  if (btnGoTopics) btnGoTopics.position(m, height - 55);
+
+  // Inputs de nomes
+  let y = header + 110;
+  for (const inp of nameInputs) {
+    inp.position(m, y);
+    inp.size(Math.min(300, width - 2 * m));
+    y += 34;
+  }
+
+  // TOPICS
+  if (btnSubFis) btnSubFis.position(m, header + 32);
+  if (btnSubMat) btnSubMat.position(m + 90, header + 32);
+
+  if (btnGoPlayers) btnGoPlayers.position(m, height - 55);
+  if (btnFinish)    btnFinish.position(m + 110, height - 55);
+
+  let ty = header + 90;
+  for (const b of topicButtons) {
+    b.position(m, ty);
+    b.size(Math.min(300, width - 2 * m));
+    ty += 34;
+  }
+
+  // ROUND
+  const baseY = height - 55;
+
+  if (answerInput) {
+    answerInput.position(m, baseY);
+    answerInput.size(Math.min(260, width * 0.3));
+  }
+
+  let bx = m + (answerInput ? answerInput.size().width : 260) + 12;
+  const buttons = [btnAnswer, btnPass, btnRepass, btnHint, btnNext];
+
+  for (const b of buttons) {
+    if (!b) continue;
+    if (bx + 90 > width) {
+      bx = m;
+      b.position(bx, baseY - 40);
+    } else {
+      b.position(bx, baseY);
+    }
+    bx += 90;
+  }
+}
+
+{
   resizeCanvas(windowWidth, windowHeight);
   W = width;
   H = height;
