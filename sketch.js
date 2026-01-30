@@ -268,6 +268,8 @@ function setup() {
   textFont("system-ui");
   setupUI();
   goMenu();
+layoutUI();
+
 }
 
 function draw() {
